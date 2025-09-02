@@ -14,10 +14,9 @@ export PATH=/opt/homebrew/bin:$PATH
 export DEFAULT_USER="$(whoami)"
 export PATH=~/Dev/flutter/bin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH=/Applications/Docker.app/Contents/Resources/bin:$PATH
+export PATH="$PYENV_ROOT/shims:$PATH"
 
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -163,6 +162,7 @@ export LANG=en_US.UTF-8
 # echo -ne '\e[6 q' # Use beam shape cursor on startup.
 # preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
 
+
 ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
@@ -196,7 +196,9 @@ cdv() {
   z "$1" && vi "$2"
 }
 
-alias oldvim="vim" 
+zvm_after_init_commands+=('bindkey "^B" beginning-of-line')
+
+alias ovim="vim" 
 alias vi="nvim" 
 alias config="/opt/homebrew/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME/"
 alias cfv="vi ~/.config/nvim"
@@ -205,6 +207,7 @@ alias cfz="vi ~/.zshrc"
 alias cf="cd ~/.config"
 alias comp2012="~/Desktop/HKUST/Lectures/'Year 2'/'Semester 2'/COMP2012/"
 alias cd="z"
+alias vim="vi -u ~/.config/vimin/init.lua"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
