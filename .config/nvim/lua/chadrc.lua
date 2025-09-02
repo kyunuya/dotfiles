@@ -7,17 +7,31 @@ local M = {}
 M.base46 = {
   theme = "catppuccin",
   transparency = true,
+  hl_override = {
+    Comment = {
+      fg = "#6c7086",
+      italic = true,
+    },
 
-  -- hl_override = {
-  -- 	Comment = { italic = true },
-  -- 	["@comment"] = { italic = true },
-  -- },
+    ["@comment"] = {
+      fg = "#6c7086",
+      italic = true,
+    },
+
+    Visual = {
+      bg = "#45475a",
+      fg = "NONE",
+    },
+  },
 }
 
 M.ui = {
   statusline = {
     theme = "minimal",
     separator_style = "block",
+  },
+  colorizer = {
+    enable = false,
   },
 }
 

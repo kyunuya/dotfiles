@@ -1,6 +1,13 @@
 return {
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },
+  --
+  -- dev = {
+  --   path = "~/projects/nvim-plugins/",
+  --   patterns = {
+  --     "kyunuya",
+  --   },
+  -- },
 
   ui = {
     icons = {
