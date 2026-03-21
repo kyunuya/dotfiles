@@ -1,0 +1,44 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "ask": {
+      "mode": "primary",
+      "model": "github-copilot/gemini-3.1-pro-preview",
+      "permission": {
+        "write": "deny",
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow"
+      }
+    },
+    "build": {
+      "mode": "primary",
+      "model": "github-copilot/gemini-3.1-pro-preview",
+      "permission": {
+        "write": "allow",
+        "edit": "allow",
+        "bash": "ask"
+      }
+    },
+    "plan": {
+      "mode": "primary",
+      "model": "github-copilot/claude-opus-4.6",
+      "permission": {
+        "write": "deny",
+        "edit": "deny",
+        "bash": "deny"
+      }
+    },
+    "code-reviewer": {
+      "description": "Reviews code for best practices and potential issues",
+      "mode": "subagent",
+      "model": "github-copilot/gemini-3.1-pro-preview",
+      "prompt": "You are a code reviewer. Focus on security, performance, and maintainability.",
+      "permission": {
+        "write": "deny",
+        "edit": "deny",
+        "bash": "ask"
+      }
+    }
+  }
+}

@@ -17,9 +17,9 @@ map("v", "<leader>lr", ":lua<cr>", { desc = "run lua", silent = true })
 map("n", "<leader>td", ":Td<cr>", { desc = "open todo list", silent = true })
 
 -- quicknote
-map("n", "<leader>qn", ":QuicknoteToggle<cr>", { desc = "open last note", silent = true })
-map("n", "<leader>qs", ":QuicknoteSelector<cr>", { desc = "open note list", silent = true })
-map("n", "<leader>nn", ":QuicknoteNew<cr>", { desc = "create new note", silent = true })
+map("n", "<leader>qn", ":QnoteToggle<cr>", { desc = "open last note", silent = true })
+map("n", "<leader>ql", ":QnoteList<cr>", { desc = "open note list", silent = true })
+map("n", "<leader>nn", ":QnoteNew<cr>", { desc = "create new note", silent = true })
 
 -- vim tmux navigator
 map("n", "<c-h>", "<cmd>TmuxNavigateLeft<cr>", { silent = true })
@@ -68,10 +68,8 @@ map("n", "<leader>-", "<cmd>split<cr>", { silent = true })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 -- copilot
-map("i", "<C-e>", 'copilot#Accept("\\<CR>")', {
-  expr = true,
-  replace_keycodes = false,
-})
+vim.g.copilot_no_tab_map = true
+map("i", "<C-e>", 'copilot#Accept("\\<End>")', { expr = true, replace_keycodes = false })
 
 -- aider
 map("n", "<leader>Ao", ":AiderOpen --no-auto-commits<CR>")
@@ -95,7 +93,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
-map("i", "<C-e>", "<End>", { desc = "move end of line" })
+-- map("i", "<C-e>", "<End>", { desc = "move end of line" })
 map("i", "<C-h>", "<Left>", { desc = "move left" })
 map("i", "<C-l>", "<Right>", { desc = "move right" })
 map("i", "<C-j>", "<Down>", { desc = "move down" })
@@ -138,7 +136,7 @@ map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = 
 map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
-map("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { silent = true })
+map("n", "<leader>fs", "<cmd>Telescope grep_string<cr>", { silent = true })
 
 map("n", "<leader>th", function()
   require("nvchad.themes").open()

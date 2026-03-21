@@ -1,34 +1,36 @@
 local gs = require("styles.globalstyles")
 
 local function render_popup()
-	if not io.popen("which icalBuddy"):read("*a"):match("icalBuddy") then
-		return
-	end
+	sbar.exec("which icalBuddy", function(output)
+		if not output or not output:match("icalBuddy") then
+			return
+		end
 
-	local ical_command =
-		"/opt/homebrew/bin/icalBuddy -ec 'Found in Natural Language,CCSF' -npn -nc -iep 'datetime,title' -po 'datetime,title' -eed -ea -n -li 4 -ps '|: |' -b '' eventsToday 2>/dev/null"
+		local ical_command =
+			"/opt/homebrew/bin/icalBuddy -ec 'Found in Natural Language,CCSF' -npn -nc -iep 'datetime,title' -po 'datetime,title' -eed -ea -n -li 4 -ps '|: |' -b '' eventsToday 2>/dev/null"
 
-	sbar.exec(ical_command, function(input)
-		local theEvent = "No events today"
+		sbar.exec(ical_command, function(input)
+			local theEvent = "No events today"
 
-		if input and #input > 0 then
-			local currentTime = os.date("%I:%M %p")
+			if input and #input > 0 then
+				local currentTime = os.date("%I:%M %p")
 
-			for anEvent in input:gmatch("[^%^]+") do
-				local eventTime = anEvent:match("^(.-)|:%s*")
-				if eventTime then
-					if eventTime > currentTime then
-						theEvent = anEvent
-						break
+				for anEvent in input:gmatch("[^%^]+") do
+					local eventTime = anEvent:match("^(.-)|:%s*")
+					if eventTime then
+						if eventTime > currentTime then
+							theEvent = anEvent
+							break
+						end
 					end
 				end
 			end
-		end
 
-		sbar.set("clock.details", {
-			label = theEvent,
-			click_script = "sketchybar --set clock popup.drawing=off",
-		})
+			sbar.set("clock.details", {
+				label = theEvent,
+				click_script = "sketchybar --set clock popup.drawing=off",
+			})
+		end)
 	end)
 end
 

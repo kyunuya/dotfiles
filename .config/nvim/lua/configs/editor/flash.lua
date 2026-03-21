@@ -24,7 +24,7 @@ return {
         multi_line = true,
       },
     },
-    labels = "asfghjklqwertuiopzxcbnm",
+    labels = "asfgqwertuiozxcbnm",
   },
 
 

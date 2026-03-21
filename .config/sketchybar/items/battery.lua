@@ -73,16 +73,16 @@ battery:subscribe({ "routine", "power_source_change", "system_woke" }, function(
 	end)
 end)
 
-battery:subscribe({ "mouse.entered", "mouse.exited", "mouse.clicked" }, function()
-	battery:set({ popup = { drawing = "toggle" } })
-	local drawing = battery:query().popup.drawing
+battery:subscribe({ "mouse.entered" }, function()
+	battery:set({ popup = { drawing = "on" } })
 
-	if drawing == "on" then
-		sbar.exec("pmset -g batt", function(batt_info)
-			local found, _, remaining = batt_info:find(" (%d+:%d+) remaining")
-			local label = found and (remaining == "0:00" and "Fully Charged" or remaining .. " remaining")
-				or "No estimate"
-			remaining_time:set({ label = { string = label } })
-		end)
-	end
+	sbar.exec("pmset -g batt", function(batt_info)
+		local found, _, remaining = batt_info:find(" (%d+:%d+) remaining")
+		local label = found and (remaining == "0:00" and "Fully Charged" or remaining .. " remaining") or "No estimate"
+		remaining_time:set({ label = { string = label } })
+	end)
+end)
+
+battery:subscribe({ "mouse.exited" }, function()
+	battery:set({ popup = { drawing = "off" } })
 end)

@@ -26,4 +26,5 @@ require "options"
 
 vim.schedule(function()
   require "mappings"
+  require "ftmappings"
 end)

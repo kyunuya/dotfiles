@@ -10,7 +10,7 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=/opt/homebrew/bin:$PATH
+export PATH="/opt/homebrew/bin:$PATH"
 export DEFAULT_USER="$(whoami)"
 export PATH=~/Dev/flutter/bin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
@@ -166,7 +166,7 @@ export LANG=en_US.UTF-8
 ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
-uni() {
+ust() {
     if [[ "$1" == "notes" ]] then
       cd ~/Documents/'Obsidian Vault'/hkust/
     elif [[ "$1" == "urop" ]] then
@@ -174,9 +174,9 @@ uni() {
     elif [[ "$1" == "kriss" ]] then
       cd ~/Desktop/HKUST/Societies/KRISS/
     elif [[ -n "$1" ]] then
-      cd ~/Desktop/HKUST/Lectures/'Year 2'/'Semester 2'/$1/
+      cd ~/Desktop/HKUST/Lectures/'Year 4'/'fall'/$1/
     else
-      cd ~/Desktop/HKUST/Lectures/'Year 3'/'Semester 1'
+      cd ~/Desktop/HKUST/Lectures/'Year 4'/'fall'
     fi
 }
 
@@ -208,6 +208,7 @@ alias cf="cd ~/.config"
 alias comp2012="~/Desktop/HKUST/Lectures/'Year 2'/'Semester 2'/COMP2012/"
 alias cd="z"
 alias vim="vi -u ~/.config/vimin/init.lua"
+alias docker="/Applications/Docker.app/Contents/Resources/bin/docker"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -239,3 +240,10 @@ eval "$(zoxide init zsh)"
 
 . "$HOME/.local/bin/env"
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# Added by Antigravity
+export PATH="/Users/kyunuya/.antigravity/antigravity/bin:$PATH"
+export PATH="/Library/TeX/texbin:$PATH"
+
+# Opencode
+export EDITOR=nvim

@@ -1,5 +1,5 @@
 return {
   "kyunuya/qnote.nvim",
-  cmd = { "QuicknoteToggle", "QuicknoteSelector", "QuicknoteNew" },
+  cmd = { "QnoteToggle", "QnoteNew", "QnoteList" },
   opts = { directory = "~/qnotes/" },
 }

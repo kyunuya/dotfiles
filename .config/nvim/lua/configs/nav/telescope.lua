@@ -21,6 +21,12 @@ return {
           width = 0.87,
           height = 0.80,
         },
+        file_ignore_patterns = {
+          "venv/",
+          "node_modules/",
+          "%.cache/",
+          "%.pyc",
+        },
         mappings = {
           n = { ["q"] = actions.close },
           i = {
@@ -28,15 +34,21 @@ return {
             ["<C-p>"] = actions.move_selection_previous,
             ["<C-[>"] = actions.move_to_top,
             ["<C-]>"] = actions.move_to_bottom,
-            ["<C-j>"] = actions.preview_scrolling_up,
-            ["<C-k>"] = actions.preview_scrolling_down,
             ["<C-h>"] = actions.preview_scrolling_left,
+            ["<C-j>"] = actions.preview_scrolling_down,
+            ["<C-k>"] = actions.preview_scrolling_up,
             ["<C-l>"] = actions.preview_scrolling_right,
+            ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
             ["<C-u>"] = false,
           },
         },
       },
-
+      pickers = {
+        find_files = {
+          hidden = true,
+          find_command = { "rg", "--files", "--no-ignore", "--hidden", "--glob", "!.git/*" },
+        },
+      },
       extensions_list = { "themes", "terms" },
       extensions = {},
     }

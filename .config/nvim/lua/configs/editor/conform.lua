@@ -7,7 +7,7 @@ return {
       css = { "prettier" },
       html = { "prettier" },
       clangd = { "clang-format" },
-      javascript = { "prettierd", "prettier", stop_after_first = true },
+      javascript = { "prettier", stop_after_first = true },
       typescript = { "eslint" },
       pylsp = { "prettier" },
     },

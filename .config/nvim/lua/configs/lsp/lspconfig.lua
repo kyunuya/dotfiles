@@ -1,13 +1,10 @@
 return {
   "neovim/nvim-lspconfig",
-  ft = { "cpp", "rust", "python", "lua", "typescript", "javascript", "java" },
+  ft = { "svelte", "cpp", "rust", "python", "lua", "typescript", "javascript", "java" },
   event = "User FilePost",
 
   config = function()
-    local lspconfig = require "lspconfig"
-
-    -- EXAMPLE
-    local servers = { "html", "clangd", "cssls", "lua_ls", "pylsp", "jdtls" }
+    local servers = { "html", "clangd", "cssls", "lua_ls", "pylsp", "jdtls", "svelte" }
     -- local nvlsp = require "nvchad.configs.lspconfig"
 
     local M = {}
@@ -85,29 +82,46 @@ return {
         },
       }
 
-      -- Support 0.10 temporarily
-
-      if vim.lsp.config then
-        vim.lsp.config("*", { capabilities = M.capabilities, on_init = M.on_init })
-        vim.lsp.config("lua_ls", { settings = lua_lsp_settings })
-        vim.lsp.enable "lua_ls"
-      else
-        require("lspconfig").lua_ls.setup {
-          capabilities = M.capabilities,
-          on_init = M.on_init,
-          settings = lua_lsp_settings,
-        }
+      local venv_path = "/Users/kyunuya/.pyenv/shims/python"
+      if vim.fn.executable(venv_path) == 0 then
+        venv_path = "python"
       end
+
+      vim.lsp.config.pylsp = {
+        cmd = { venv_path, "-m", "pylsp" },
+        root_markers = { ".git", "pyproject.toml", "setup.py" },
+      }
+
+      vim.lsp.config.svelte = {
+        filetypes = { "svelte", "html" },
+      }
+
+      --   if vim.lsp.config then
+      --     vim.lsp.config("*", {
+      --       on_attach = M.on_attach,
+      --       capabilities = M.capabilities,
+      --       on_init = M.on_init,
+      --     })
+      --     vim.lsp.config("lua_ls", { settings = lua_lsp_settings })
+      --     vim.lsp.enable "lua_ls"
+      --   else
+      --     require("lspconfig").lua_ls.setup {
+      --       capabilities = M.capabilities,
+      --       on_init = M.on_init,
+      --       settings = lua_lsp_settings,
+      --     }
+      --   end
     end
 
-    -- lsps with default config
     for _, lsp in ipairs(servers) do
-      lspconfig[lsp].setup {
-        on_attach = M.on_attach,
-        on_init = M.on_init,
-        capabilities = M.capabilities,
-      }
+      vim.lsp.enable(lsp)
     end
+
+    vim.lsp.config("*", {
+      on_attach = M.on_attach,
+      on_init = M.on_init,
+      capabilities = M.capabilities,
+    })
 
     -- Add border to the diagnostic popup window
     vim.diagnostic.config {

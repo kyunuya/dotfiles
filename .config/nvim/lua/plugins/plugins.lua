@@ -7,4 +7,5 @@ return {
   { import = "configs.git" },
   { import = "configs.nav" },
   { import = "configs.my" },
+  { import = "configs.notes" },
 }

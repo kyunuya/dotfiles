@@ -8,6 +8,7 @@ return {
       "nvim-telescope/telescope.nvim", -- optional
       "neovim/nvim-lspconfig", -- optional
     },
+    ft = { "svelte", "typescript", "tsx" },
     opts = {}, -- your configuration
   },
 }
