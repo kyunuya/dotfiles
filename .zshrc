@@ -247,3 +247,7 @@ export PATH="/Library/TeX/texbin:$PATH"
 
 # Opencode
 export EDITOR=nvim
+
+function zvm_after_init(){
+  source <(fzf --zsh)
+}

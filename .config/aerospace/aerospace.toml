@@ -209,7 +209,7 @@ alt-shift-l = ['join-with right', 'mode main']
 
 # Move window to workspace
 [[on-window-detected]]
-if.app-id = 'com.googlecode.iterm2'
+if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace T'
 
 [[on-window-detected]]
