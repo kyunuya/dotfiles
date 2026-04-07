@@ -5,3 +5,20 @@ macos-titlebar-style = hidden
 theme = Catppuccin Mocha
 font-family = FiraCode Nerd Font Mono
 font-size = 13.5
+
+# MacOS Keybinding
+keybind = super+t=text:\x01c
+keybind = super+w=text:\x01x
+keybind = super+k=text:\x01t
+keybind = super+]=text:\x01n
+keybind = super+[=text:\x01p
+keybind = super+Digit1=text:\x01\x31
+keybind = super+Digit2=text:\x01\x32
+keybind = super+Digit3=text:\x01\x33
+keybind = super+Digit4=text:\x01\x34
+keybind = super+Digit5=text:\x01\x35
+keybind = super+Digit6=text:\x01\x36
+keybind = super+Digit7=text:\x01\x37
+keybind = super+Digit8=text:\x01\x38
+keybind = super+Digit9=text:\x01\x39
+keybind = super+Digit0=text:\x01\x310

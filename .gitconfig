@@ -1,0 +1,12 @@
+[user]
+	email = kyunuya@github.com
+	name = kyunuya
+[http]
+	postBuffer = 524288000
+[merge]
+  tool = nvimdiff
+[mergetool]
+  prompt = false
+  keepBackup = false
+[mergetool "nvimdiff"]
+  layout = "LOCAL,BASE,REMOTE / MERGED"

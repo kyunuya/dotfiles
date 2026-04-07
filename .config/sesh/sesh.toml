@@ -1,0 +1,39 @@
+[[session]]
+name = "fyp"
+path = "~/Desktop/HKUST/FYP/basketball_analysis/"
+startup_command = "opencode"
+windows = [ "fyp-frontend", "fyp-backend" ]
+
+[[window]]
+name = "fyp-frontend"
+startup_script = "cd frontend && clear"
+
+[[window]]
+name = "fyp-backend"
+startup_script = "cd backend && clear"
+
+[[session]]
+name = "nvimconf"
+path = "~/.config/nvim"
+startup_command = "nvim"
+
+[[session]]
+name = "config"
+path = "~/.config"
+
+[[session]]
+name = "tmuxconf"
+path = "~/"
+startup_command = "vi .tmux.conf"
+preview_command = "bat --color=always ~/.tmux.conf"
+
+[[session]]
+name = "seshconf"
+path = "~/.config/sesh"
+startup_command = "vi sesh.toml"
+preview_command = "bat --color=always ~/.config/sesh/sesh.toml"
+
+[[session]]
+name = "Downloads 📥"
+path = "~/Downloads"
+startup_command = "yazi"

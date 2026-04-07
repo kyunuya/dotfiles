@@ -24,7 +24,8 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "options"
 
+vim.opt.diffopt:remove "linematch:40"
+
 vim.schedule(function()
   require "mappings"
-  require "ftmappings"
 end)

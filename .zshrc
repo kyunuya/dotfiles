@@ -248,6 +248,16 @@ export PATH="/Library/TeX/texbin:$PATH"
 # Opencode
 export EDITOR=nvim
 
+# fzf keybindings
 function zvm_after_init(){
   source <(fzf --zsh)
+}
+
+# Yazi wrapper
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
 }
