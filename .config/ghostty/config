@@ -12,6 +12,8 @@ keybind = super+w=text:\x01x
 keybind = super+k=text:\x01t
 keybind = super+]=text:\x01n
 keybind = super+[=text:\x01p
+keybind = super+l=text:\x01L
+keybind = ctrl+tab=text:\x01\x09
 keybind = super+Digit1=text:\x01\x31
 keybind = super+Digit2=text:\x01\x32
 keybind = super+Digit3=text:\x01\x33

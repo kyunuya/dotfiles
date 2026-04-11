@@ -30,7 +30,7 @@ M.ui = {
     theme = "minimal",
     separator_style = "block",
   },
-  colorizer = {
+  colorify = {
     enable = false,
   },
 }

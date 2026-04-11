@@ -118,6 +118,7 @@ return {
         completion = { border = "rounded" },
         documentation = { border = "rounded" },
       },
+      formatting = { format = require("tailwindcss-colorizer-cmp").formatter },
     }
 
     cmp.setup(user_opts)

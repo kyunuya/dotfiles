@@ -1,3 +1,5 @@
+dir_length = 1
+
 [[session]]
 name = "fyp"
 path = "~/Desktop/HKUST/FYP/basketball_analysis/"
@@ -20,6 +22,11 @@ startup_command = "nvim"
 [[session]]
 name = "config"
 path = "~/.config"
+
+[[session]]
+name = "zshconf"
+path = "~/"
+startup_command = "vi ~/.zshrc"
 
 [[session]]
 name = "tmuxconf"
