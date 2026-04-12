@@ -5,6 +5,8 @@
 	postBuffer = 524288000
 [merge]
   tool = nvimdiff
+[diff]
+    tool = nvimdiff
 [mergetool]
   prompt = false
   keepBackup = false
