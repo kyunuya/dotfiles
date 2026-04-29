@@ -4,10 +4,8 @@ local colors = require("styles.colors")
 local popup_off = "sketchybar --set wifi popup.drawing=off"
 local popup_click_script = "sketchybar --set wifi popup.drawing=toggle"
 
-local ip_val = io.popen("ipconfig getifaddr en0"):read("*a")
-local ssid_val = io.popen(
-	"ipconfig getsummary $(networksetup -listallhardwareports | awk '/Hardware Port: Wi-Fi/{getline; print $2}') | awk -F ' SSID : ' '/ SSID : / {print $2}'"
-):read("*a")
+local ip_val = ""
+local ssid_val = ""
 
 local function popup(env, action)
 	sbar.exec(" sketchybar --set " .. env.NAME .. " popup.drawing=" .. action)
@@ -23,7 +21,7 @@ local function render_bar_item(wifi)
 		icon_color = colors.white
 		icon = "􀐿"
 	else
-		icon_color = colors.white_25
+		icon_color = colors.red
 		icon = "􀐾"
 	end
 
@@ -55,7 +53,7 @@ local wifi = sbar.add("item", "wifi", {
 		align = "right",
 	},
 	updates = "when_shown",
-	update_freq = 5,
+	-- update_freq = 5,
 	click_script = popup_off,
 })
 wifi:set(gs.defaults.menu)
@@ -80,7 +78,7 @@ wifi:subscribe({ "mouse.entered" }, function(env)
 	popup(env, "on")
 end)
 
-wifi:subscribe({ "mouse.exited", "mouse.exited.gloabl" }, function(env)
+wifi:subscribe({ "mouse.exited", "mouse.exited.global" }, function(env)
 	popup(env, "off")
 end)
 
@@ -88,7 +86,21 @@ wifi:subscribe("mouse.clicked", function(env)
 	popup(env, "toggle")
 end)
 
-wifi:subscribe({ "routine", "forced" }, function()
-	render_bar_item(wifi)
-	render_popup()
+wifi:subscribe({ "system_woke", "routine", "wifi_change", "forced" }, function()
+	sbar.exec(
+		"ipconfig getsummary $(networksetup -listallhardwareports | awk '/Hardware Port: Wi-Fi/{getline; print $2}') | awk -F ' SSID : ' '/ SSID : / {print $2}'",
+		function(ssid_ouput)
+			sbar.exec("ipconfig getifaddr en0", function(ip_output)
+				ssid_val = ssid_ouput
+				ip_val = ip_output
+				render_bar_item(wifi)
+				render_popup()
+			end)
+		end
+	)
 end)
+
+-- wifi:subscribe({ "routine", "wifi_update", "forced" }, function()
+-- 	render_bar_item(wifi)
+-- 	render_popup()
+-- end)
