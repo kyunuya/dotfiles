@@ -204,6 +204,9 @@ map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
 map("n", "<leader>fs", "<cmd>Telescope grep_string<cr>", { silent = true })
+map("n", "<leader>9m", function()
+  require("99.extensions.telescope").select_model()
+end)
 
 map("n", "<leader>th", function()
   require("nvchad.themes").open()

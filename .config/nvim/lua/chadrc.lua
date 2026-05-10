@@ -12,7 +12,9 @@ M.base46 = {
       fg = "#6c7086",
       italic = true,
     },
-
+    LineNr = {
+      fg = "#7F808F",
+    },
     ["@comment"] = {
       fg = "#6c7086",
       italic = true,
