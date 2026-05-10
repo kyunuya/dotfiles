@@ -121,14 +121,13 @@ return {
 				color = colors.bar_color,
 				corner_radius = paddings,
 			},
-			blur_radius = 32,
+			blur_radius = 3,
 		},
 
 		menu = {
 			popup = {
-				blur_radius = 32,
+				blur_radius = 10,
 				background = {
-					shadow = { drawing = true },
 					color = colors.bar_color,
 					corner_radius = paddings,
 					border_width = 1,
@@ -147,6 +146,7 @@ return {
 			},
 			padding_left = paddings,
 			padding_right = paddings,
+			blur_radius = 50,
 		},
 	},
 

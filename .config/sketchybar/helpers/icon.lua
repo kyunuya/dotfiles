@@ -42,6 +42,11 @@ return {
 		charging = "􀢋",
 	},
 
+	bluetooth = {
+		on = "󰂯",
+		off = "󰂲",
+	},
+
 	-- volume icons,
 	volume_100 = "􀊩",
 	volume_66 = "􀊧",
